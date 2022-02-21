@@ -12,6 +12,10 @@ const io = socketIO(server);
 
 io.on('connection', (socket) => {
     console.log('Client connected');
+    socket.on('talk', ()=>{
+      console.log("Got Message from client")
+      io.emit('talk', "Hey Buddy!!!")
+    })
     socket.on('disconnect', () => console.log('Client disconnected'));
   });
 
